@@ -70,11 +70,11 @@ public class Fast {
                   if (collinearPoints.size() >= 4) {
                         if (copyCollinearPoints.isEmpty()){
                             copyCollinearPoints = collinearPoints;
-                            StdOut.println("i am here empty");
+                           // StdOut.println("i am here empty");
                           }
                         if (!copyCollinearPoints.isEmpty() && 
                                     collinearPoints.size() > 4){
-                            StdOut.println("i am here");
+                           // StdOut.println("i am here");
                             if (collinearPoints.containsAll(copyCollinearPoints)
                                  && collinearPoints.size() > copyCollinearPoints.size()){
                                 copyCollinearPoints = collinearPoints;
