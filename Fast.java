@@ -41,7 +41,11 @@ public class Fast {
        ArrayList<Point> copyCollinearPoints = new ArrayList<Point>();
        for (int i = 0; i < points.length - 1; i++){
             //sort the array to respect of points[i]
+           //StdOut.printf("i = %d", i);
             Arrays.sort(points,i, points.length, points[i].SLOPE_ORDER);
+           /*for( Point point : points)
+               StdOut.println(point);
+           StdOut.println();*/
             ArrayList<Point> collinearPoints = new ArrayList<Point>();
             double currentSlope = points[i].slopeTo(points[i+1]);
             collinearPoints.add(points[i]);
@@ -58,46 +62,47 @@ public class Fast {
                     //get min and max than draw the line
                     Collections.min(collinearPoints).
                       drawTo(Collections.max(collinearPoints));
+                   
                 }
                 if( currentSlope != points[i].slopeTo(points[j]))
                 {
-                    ///for( Point point : collinearPoints)
-                    // StdOut.println(point);
-                    // StdOut.println();
-                    // StdOut.println("i am here if stat");
-                    if (collinearPoints.size() >= 4) {
+                   
+                  if (collinearPoints.size() >= 4) {
                         if (copyCollinearPoints.isEmpty()){
                             copyCollinearPoints = collinearPoints;
-                           
-                        }/*else{
-                            if (copyCollinearPoints.containsAll(collinearPoints) &&
-                                collinearPoints.size() > copyCollinearPoints.size() ){
+                            StdOut.println("i am here empty");
+                          }
+                        if (!copyCollinearPoints.isEmpty() && 
+                                    collinearPoints.size() > 4){
+                            StdOut.println("i am here");
+                            if (collinearPoints.containsAll(copyCollinearPoints)
+                                 && collinearPoints.size() > copyCollinearPoints.size()){
                                 copyCollinearPoints = collinearPoints;
-                                StdOut.println("I am here");
+                                
                             }
-                        }*/
                             
-                        for ( int k = 0; k < collinearPoints.size(); k++){
-                             StdOut.print(collinearPoints.get(k).toString());
-                             if ( k  < collinearPoints.size() - 1)
-                                StdOut.print("->");
-                           }
+                        }
+                        
+                        if (copyCollinearPoints.size() >= 4){   
+                         for ( int k = 0; k < copyCollinearPoints.size(); k++){
+                                StdOut.print(copyCollinearPoints.get(k).toString());
+                                if ( k  < copyCollinearPoints.size() - 1)
+                                    StdOut.print("->");
+                             }
                            StdOut.println();
-                   }
-                    currentSlope = points[i].slopeTo(points[j]);
-                    collinearPoints.clear();
-                    collinearPoints.add(points[i]);
-                    collinearPoints.add(points[j]);
+                        }
+                  } 
+                        currentSlope = points[i].slopeTo(points[j]);
+                        collinearPoints.clear();
+                        collinearPoints.add(points[i]);
+                        collinearPoints.add(points[j]);
                        
-               }     
+                     }     
                 
-               }
+                }
            
           
-            }   
-              
-           
-       }
-                
+          }            
+   }
 }
 
